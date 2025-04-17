@@ -1,0 +1,22 @@
+|--- 年龄 <= 29.50
+|   |--- marital_status <= 0.50
+|   |   |--- policy_start_date <= 15313.00
+|   |   |   |--- weights: [2.00, 3.00] class: 1
+|   |   |--- policy_start_date >  15313.00
+|   |   |   |--- weights: [53.00, 9.00] class: 0
+|   |--- marital_status >  0.50
+|   |   |--- marital_status <= 1.50
+|   |   |   |--- weights: [19.00, 68.00] class: 1
+|   |   |--- marital_status >  1.50
+|   |   |   |--- weights: [17.00, 2.00] class: 0
+|--- 年龄 >  29.50
+|   |--- 年龄 <= 60.50
+|   |   |--- policy_end_date <= 20116.00
+|   |   |   |--- weights: [1.00, 0.00] class: 0
+|   |   |--- policy_end_date >  20116.00
+|   |   |   |--- weights: [7.00, 481.00] class: 1
+|   |--- 年龄 >  60.50
+|   |   |--- family_members <= 3.50
+|   |   |   |--- weights: [38.00, 35.00] class: 0
+|   |   |--- family_members >  3.50
+|   |   |   |--- weights: [9.00, 56.00] class: 1

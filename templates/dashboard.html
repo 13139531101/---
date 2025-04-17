@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>客户续保分析大屏</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script>
+      if (typeof echarts === "undefined") {
+        document.write(
+          "<script src=\"{{ url_for('static', filename='js/echarts.min.js') }}\"><\/script>"
+        );
+      }
+    </script>
+    <script src="{{ url_for('static', filename='js/charts-config.js') }}"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        initGaugeChart();
+        initFeatureComparison();
+        initCustomerCluster();
+        initTimeTrend();
+      });
+    </script>
+  </head>
+  <body>
+    <div class="header-container">
+      <h1>客户续保分析大屏</h1>
+      <div class="key-metrics">
+        <div class="metric-item">
+          <span class="metric-label">当前续保率</span>
+          <span class="metric-value">{{ renewal_rate }}%</span>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard-container">
+      <!-- 仪表盘模块 -->
+      <div class="chart-card" id="gauge">
+        <h3>整体续保率</h3>
+        <div class="chart-container"></div>
+      </div>
+
+      <!-- 特征对比模块 -->
+      <div class="chart-card" id="feature-comparison">
+        <h3>特征重要性对比</h3>
+        <div class="chart-container"></div>
+      </div>
+
+      <!-- 客户分群模块 -->
+      <div class="chart-card" id="customer-cluster">
+        <h3>客户群体分析</h3>
+        <div class="chart-container"></div>
+      </div>
+
+      <!-- 时间趋势模块 -->
+      <div class="chart-card" id="time-trend">
+        <h3>续保时间趋势</h3>
+        <div class="chart-container"></div>
+      </div>
+    </div>
+  </body>
+</html>
